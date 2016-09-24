@@ -1,0 +1,46 @@
+{
+  "directories": {
+    "test": "test"
+  },
+  "author": "azu",
+  "license": "MIT",
+  "files": [
+    "bin/",
+    "lib/",
+    "src/"
+  ],
+  "name": "almin-reduce-store",
+  "version": "1.0.0",
+  "description": "Almin's reduce store library.",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "mocha test/",
+    "build": "NODE_ENV=production babel src --out-dir lib --source-maps",
+    "watch": "babel src --out-dir lib --watch --source-maps",
+    "prepublish": "npm run --if-present build"
+  },
+  "keywords": [
+    "almin"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/almin/almin-reduce-store.git"
+  },
+  "bugs": {
+    "url": "https://github.com/almin/almin-reduce-store/issues"
+  },
+  "homepage": "https://github.com/almin/almin-reduce-store",
+  "peerDependencies": {
+    "almin": "^0.x.x || ^1.x.x"
+  },
+  "devDependencies": {
+    "almin": "^0.8.0",
+    "babel-cli": "^6.14.0",
+    "babel-preset-es2015": "^6.14.0",
+    "babel-preset-jsdoc-to-assert": "^4.0.0",
+    "babel-preset-power-assert": "^1.0.0",
+    "babel-register": "^6.14.0",
+    "mocha": "^3.0.2",
+    "power-assert": "^1.4.1"
+  }
+}
