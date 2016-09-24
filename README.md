@@ -1,6 +1,6 @@
 # almin-reduce-store [![Build Status](https://travis-ci.org/almin/almin-reduce-store.svg?branch=master)](https://travis-ci.org/almin/almin-reduce-store)
 
-Almin's reduce store library.
+[Almin](https://github.com/almin/almin "Almin.js")'s reduce store library.
 
 It is similar with Facebook flux's [ReduceStore](http://facebook.github.io/flux/docs/flux-utils.html#reducestore-t "ReduceStore").
 
