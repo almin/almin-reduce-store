@@ -1,4 +1,4 @@
-# almin-reduce-store
+# almin-reduce-store [![Build Status](https://travis-ci.org/almin/almin-reduce-store.svg?branch=master)](https://travis-ci.org/almin/almin-reduce-store)
 
 Almin's reduce store library.
 
