@@ -1,5 +1,6 @@
 // LICENSE : MIT
 "use strict";
+const assert = require("assert");
 import {Store} from "almin";
 export default class ReduceStore extends Store {
     constructor() {
@@ -18,6 +19,12 @@ export default class ReduceStore extends Store {
      * @param {ReduceState} newState
      */
     setState(newState) {
+        if (process.env.NODE_ENV === 'development') {
+            assert(newState instanceof this.state.constructor, `newState should be instanceof exist this.state.constructor.
+newState: ${newState}
+this.state.constructor: ${this.state.constructor}
+`);
+        }
         if (this.state.equals(newState)) {
             return;
         }

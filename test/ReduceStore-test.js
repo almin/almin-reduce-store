@@ -32,4 +32,22 @@ describe("ReduceStore", () => {
             useCase.execute();
         });
     });
+    context("when wrong setState", () => {
+        it("should throw assertionError", () => {
+            class TestStore extends ReduceStore {
+                constructor() {
+                    super();
+                    this.state = new AlwaysNewState();
+                }
+            }
+            const store = new TestStore();
+            try {
+                const invalidStateShape = {};
+                store.setState(invalidStateShape);
+                throw new Error("SHOULD NOT THROWN ERROR");
+            } catch (error) {
+                assert(error.name === "AssertionError");
+            }
+        });
+    });
 });
