@@ -10,7 +10,7 @@
     "src/"
   ],
   "name": "almin-reduce-store",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Almin's reduce store library.",
   "main": "lib/index.js",
   "scripts": {
