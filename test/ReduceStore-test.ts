@@ -1,9 +1,9 @@
 // LICENSE : MIT
 "use strict";
 const assert = require("assert");
-import ReduceStore from "../src/ReduceStore";
+import { ReduceStore } from "../src/";
 import AlwaysNewState from "./mock/AlwaysNewState";
-import {UseCase} from "almin";
+import { UseCase } from "almin";
 describe("ReduceStore", () => {
     context("when change the state", () => {
         it("should call #onChange handler", (done) => {
@@ -15,6 +15,8 @@ describe("ReduceStore", () => {
                 }
             }
             class TestStore extends ReduceStore {
+                state: AlwaysNewState;
+
                 constructor() {
                     super();
                     this.state = new AlwaysNewState();
@@ -43,7 +45,7 @@ describe("ReduceStore", () => {
             const store = new TestStore();
             try {
                 const invalidStateShape = {};
-                store.setState(invalidStateShape);
+                store.setState(invalidStateShape as any);
                 throw new Error("SHOULD NOT THROWN ERROR");
             } catch (error) {
                 assert(error.name === "AssertionError");
