@@ -1,22 +1,23 @@
 // LICENSE : MIT
 "use strict";
+import { Payload } from "almin";
 /**
  * ReduceState class is an abstraction class.
  * It provide redux like mechanism.
  * You should override `reduce(payload): ReduceState`.
  */
-export default class ReduceState {
+export class ReduceState {
     /**
      * Compare `this` properties and `targetState` properties
      * If all properties is matched, return true.
      * @param {ReduceState} targetState
      * @returns {boolean}
      */
-    equals(targetState) {
+    equals(targetState: this): boolean {
         if (this === targetState) {
             return true;
         }
-        return Object.keys(this).every((key) => {
+        return Object.keys(this).every((key: keyof this) => {
             return this[key] === targetState[key];
         });
     }
@@ -27,7 +28,7 @@ export default class ReduceState {
      * @param {Object} payload
      * @returns {ReduceState}
      */
-    reduce(payload) {
+    reduce(payload: Payload): ReduceState {
         switch (payload.type) {
             default:
                 return this;

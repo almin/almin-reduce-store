@@ -1,8 +1,10 @@
 // LICENSE : MIT
 "use strict";
-import {ReduceStore} from "../../src/";
 import ExampleState from "./ExampleState";
+import { ReduceStore } from "../../src/";
 export default class ExampleStore extends ReduceStore {
+    state: ExampleState;
+
     constructor() {
         super();
         this.state = new ExampleState();

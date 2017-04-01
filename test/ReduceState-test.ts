@@ -1,12 +1,15 @@
 'use strict';
-import assert from 'assert';
-import ReduceState from '../src/ReduceState';
+import * as assert from 'assert';
+import { ReduceState } from '../src/';
 
 describe('ReduceState', () => {
     describe('#equals()', () => {
         context('when compare itself', () => {
             it('should return true', () => {
                 class TestState extends ReduceState {
+                    foo: string;
+                    bar: number;
+
                     constructor() {
                         super();
                         this.foo = 'string';
@@ -20,6 +23,9 @@ describe('ReduceState', () => {
         context('when every property is equaled that are enumerable', () => {
             it('should return true', () => {
                 class TestState extends ReduceState {
+                    foo: string;
+                    bar: number;
+
                     constructor() {
                         super();
                         this.foo = 'string';
@@ -34,13 +40,16 @@ describe('ReduceState', () => {
                 }
                 const testAState = new TestState();
                 const testBState = new TestState();
-                testBState.nonEnumerableProp = 'CHANGE_PROPERTY_VALUE';
+                (testBState as any).nonEnumerableProp = 'CHANGE_PROPERTY_VALUE';
                 assert(testAState.equals(testBState));
             });
         });
         context('when the state has non-equal property', () => {
             it('should return false', () => {
                 class TestState extends ReduceState {
+                    foo: string;
+                    bar: number;
+
                     constructor() {
                         super();
                         this.foo = 'string';
@@ -61,14 +70,14 @@ describe('ReduceState', () => {
                 class TestState extends ReduceState {
                 }
                 const testState = new TestState();
-                const newState = testState.reduce({type: "UNKNOWN"});
+                const newState = testState.reduce({ type: "UNKNOWN" });
                 assert(testState === newState);
             });
         });
         context('when can handle payload', () => {
             it('should return true', () => {
                 class TestState extends ReduceState {
-                    reduce(payload) {
+                    reduce(payload: any) {
                         switch (payload.type) {
                             case "A":
                                 return new TestState();
@@ -78,7 +87,7 @@ describe('ReduceState', () => {
                     }
                 }
                 const state = new TestState();
-                const newState = state.reduce({type: "A"});
+                const newState = state.reduce({ type: "A" });
                 assert(state !== newState);
             });
         });

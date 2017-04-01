@@ -1,11 +1,13 @@
 // LICENSE : MIT
 "use strict";
-import ReduceState from "../../src/ReduceState";
+import { ReduceState } from "../../src/";
 /**
  * Always return new State
  */
 export default class AlwaysNewState extends ReduceState {
-    constructor({count = 0} = {}) {
+    count: number;
+
+    constructor({ count = 0 } = {}) {
         super();
         this.count = count;
     }
