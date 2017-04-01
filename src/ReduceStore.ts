@@ -4,7 +4,7 @@ const assert = require("assert");
 import { Store, Payload } from "almin";
 import { ReduceState } from "./ReduceState";
 export class ReduceStore extends Store {
-    state: ReduceState | null;
+    protected state: ReduceState | null;
 
     constructor() {
         super();
@@ -39,7 +39,6 @@ this.state.constructor: ${this.state!.constructor}
     /**
      * Call `State#reduce` and setState
      * @param {Payload} payload
-     * @private
      */
     private _onDispatch(payload: Payload): void {
         if (process.env.NODE_ENV !== "production") {
