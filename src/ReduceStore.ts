@@ -4,7 +4,7 @@ const assert = require("assert");
 import { Store, Payload } from "almin";
 import { ReduceState } from "./ReduceState";
 export class ReduceStore extends Store {
-    protected state: ReduceState | null;
+    state: ReduceState | null;
 
     constructor() {
         super();
