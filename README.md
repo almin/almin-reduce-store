@@ -12,7 +12,61 @@ Install with [npm](https://www.npmjs.com/):
 
 ## Usage
 
-There are two components - `Store` and `State`.
+There are two components - `ReduceStore` and `ReduceState`.
+
+`ReduceStore` and `ReduceState` are a set.
+
+### API
+
+**ReduceStore**:
+```ts
+import { Store } from "almin";
+import { ReduceState } from "./ReduceState";
+export declare class ReduceStore extends Store {
+    state: ReduceState | null;
+    constructor();
+    /**
+     * set `newState` to this `store.state`.
+     * If `newState` is the same with `tis.state`, don't set.
+     * @param {ReduceState} newState
+     */
+    setState(newState: ReduceState): void;
+    /**
+     * Call `State#reduce` and setState
+     * @param {Payload} payload
+     * @private
+     */
+    private _onDispatch(payload);
+}
+```
+
+**ReduceState**:
+```ts
+import { Payload } from "almin";
+/**
+ * ReduceState class is an abstraction class.
+ * It provide redux like mechanism.
+ * You should override `reduce(payload): ReduceState`.
+ */
+export declare class ReduceState {
+    /**
+     * Compare `this` properties and `targetState` properties
+     * If all properties is matched, return true.
+     * @param {ReduceState} targetState
+     * @returns {boolean}
+     */
+    equals(targetState: this): boolean;
+    /**
+     * It default `reduce` method.
+     * The `reduce` method should be override by inherited state.
+     * @param {Object} payload
+     * @returns {ReduceState}
+     */
+    reduce(payload: Payload): ReduceState;
+}
+```
+
+### Example
 
 `ExampleState`:
 
@@ -50,7 +104,6 @@ export default class ExampleState extends ReduceState {
 `ReduceStore`:
 
 ```js
-// LICENSE : MIT
 "use strict";
 import {ReduceStore} from "almin-reduce-store";
 import ExampleState from "./ExampleState";
@@ -68,7 +121,7 @@ export default class ExampleStore extends ReduceStore {
 }
 ```
 
-When execute [IncrementUseCase](./test/example/IncrementUseCase.js) and `ExampleStore#getState` return new State of `ExampleState`.
+When execute [IncrementUseCase](./test/example/IncrementUseCase.ts) and `ExampleStore#getState` return new State of `ExampleState`.
 
 See [Example](./test/example) for details.
 
