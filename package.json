@@ -12,8 +12,8 @@
   "name": "almin-reduce-store",
   "version": "1.0.2",
   "description": "Almin's reduce store library.",
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
+  "main": "lib/src/index.js",
+  "types": "lib/src/index.d.ts",
   "scripts": {
     "test": "mocha test/",
     "prebuild": "rimraf lib",
