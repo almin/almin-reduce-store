@@ -16,6 +16,7 @@
   "types": "lib/index.d.ts",
   "scripts": {
     "test": "mocha test/",
+    "prebuild": "rimraf lib",
     "build": "cross-env NODE_ENV=production tsc -p .",
     "watch": "tsc -p . --watch",
     "prepublish": "npm run --if-present build"
@@ -42,6 +43,7 @@
     "espower-typescript": "^8.0.0",
     "mocha": "^3.2.0",
     "power-assert": "^1.4.2",
+    "rimraf": "^2.6.1",
     "typescript": "^2.2.2"
   }
 }

@@ -3,14 +3,11 @@
 const assert = require("assert");
 import { Store, Payload } from "almin";
 import { ReduceState } from "./ReduceState";
-export class ReduceStore extends Store {
-    state: ReduceState | null;
+export class ReduceStore<T extends ReduceState> extends Store {
+    state: T | null;
 
     constructor() {
         super();
-        /**
-         * @type {ReduceState}
-         **/
         this.state = null;
         // Automatically handling onDispatch
         this.onDispatch(this._onDispatch.bind(this));
@@ -21,7 +18,7 @@ export class ReduceStore extends Store {
      * If `newState` is the same with `tis.state`, don't set.
      * @param {ReduceState} newState
      */
-    setState(newState: ReduceState): void {
+    setState(newState: T): void {
         if (process.env.NODE_ENV !== "production") {
             assert(this.state !== null, "this.state is null, should be set to this.state in constructor.");
             assert(newState instanceof this.state!.constructor, `newState should be instanceof exist this.state.constructor.
@@ -46,6 +43,6 @@ this.state.constructor: ${this.state!.constructor}
             assert(this.state !== null, "this.state is null, should be set to this.state in constructor.");
             assert(payload !== undefined, `payload is undefined: ${payload}`);
         }
-        this.setState(this.state!.reduce(payload));
+        this.setState(this.state!.reduce<T>(payload));
     }
 }

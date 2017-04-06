@@ -28,7 +28,7 @@ export class ReduceState {
      * @param {Object} payload
      * @returns {ReduceState}
      */
-    reduce(payload: Payload): ReduceState {
+    reduce<T extends ReduceState>(payload: Payload): T | this {
         switch (payload.type) {
             default:
                 return this;
