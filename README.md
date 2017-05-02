@@ -1,3 +1,8 @@
+# [DEPRECATED]
+
+Almin 0.12 `Store` has `setState` and `shouldStateUpdate` method.
+This methods will work same as this.
+
 # almin-reduce-store [![Build Status](https://travis-ci.org/almin/almin-reduce-store.svg?branch=master)](https://travis-ci.org/almin/almin-reduce-store)
 
 [Almin](https://github.com/almin/almin "Almin.js")'s reduce store library.
